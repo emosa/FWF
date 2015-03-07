@@ -1,16 +1,42 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-            <title>My Grocery List</title>
-	</head>
+<html ng-app='appList'>
+<head>
+	<meta charset="UTF-8">
+		<title>Elimarie Morales Santiago Grocery List</title>
+		<!-- Stylesheets-->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<!-- Javascript-->
+		<script src="js/angular.js"></script>
+		<script src="js/app.js"></script>
+</head>
 
-<body ng-app>
-
-
+<body ng-controller="GroceryList">
+	<div class="row">
+		<div class="col-md-3 col-md-offset-4">
+			<h1>Grocery List</h1>
+				<div id="container">
+            		<table class="table table-hover">
+					<tr ng-repeat='item in items'>
+						<td>
+						<span class="done-{{item.done}}">{{item.name}}</span>
+						<span data-ng-click="deleteItem($index)" class="glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
+						</td>
+                        <tr>Quantity</tr><span>
+                        <tr>{{items.length}}</tr>
+					</tr>
+					</table>
+                    
+                    <form name="addGrocery" ng-submit="addItem()" novalidate>
+					<input class="add-input" placeholder="Add to list" type="text" ng-model="item" ng-model-instant required/>
+					<button class="btn btn-info" type="submit" ng-disabled="addGrocery.$invalid">+</button>
+                                        
+			</form>
+		</div>
+	</div>
+</div>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
-<script src="js/angular.js"></script>
-<script src="js/app.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
